@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createStackNavigator} from '@react-navigation/stack'
 
 import HomeScreen from './pages/Home';
 import FindScreen from './pages/Find';
@@ -19,18 +20,75 @@ import NearbyScreen from './pages/Nearby';
 import MineScreen from './pages/Mine';
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
-export default function App(){
+// 首页导航栏
+function StackHomeScreen() {
   return(
-    <NavigationContainer>
-      <Tab.Navigator
+    <Stack.Navigator
+      initialRouteName = "Home"
+      >
+        <Stack.Screen
+         name="首页"
+         component = {HomeScreen}
+         options = {{
+           tabBarLabel:'首页'
+         }}
+        />
+      </Stack.Navigator>
+  )
+}
+// 发现导航栏
+function StackFindScreen() {
+  return(
+    <Stack.Navigator
+      initialRouteName = "Find"
+      >
+        <Stack.Screen
+         name="发现"
+         component = {FindScreen}
+         options = {{
+           tabBarLabel:'首页'
+         }}
+        />
+      </Stack.Navigator>
+  )
+}
+// 附近导航栏
+function StackNearbyScreen() {
+  return(
+    <Stack.Navigator
+      initialRouteName = "Nearby">
+        <Stack.Screen
+          name="附近"
+          component = {NearbyScreen}
+        />
+      </Stack.Navigator>
+  )
+}
+// 我的导航栏
+function StackMineScreen() {
+  return(
+    <Stack.Navigator
+      initialRouteName = "Mine">
+        <Stack.Screen
+          name="我的"
+          component = {MineScreen}
+        />
+      </Stack.Navigator>
+  )
+}
+// 标签栏
+function TabScreen() {
+  return(
+    <Tab.Navigator
        initialRouteName="Home"
        tabBarOptions={{
          activeTintColor:'#e91e63'
        }}>
         <Tab.Screen 
         name="Home" 
-        component = {HomeScreen} 
+        component = {StackHomeScreen} 
         options={{
           tabBarLabel:'首页',
           tabBarIcon:({focused}) => {
@@ -44,7 +102,7 @@ export default function App(){
         />
         <Tab.Screen 
         name="Find" 
-        component = {FindScreen} 
+        component = {StackFindScreen} 
         options={{
           tabBarLabel:'发现',
           tabBarIcon:({focused}) => {
@@ -58,7 +116,7 @@ export default function App(){
         />
         <Tab.Screen 
         name="Nearby" 
-        component = {NearbyScreen} 
+        component = {StackNearbyScreen} 
         options={{
           tabBarLabel:'附近',
           tabBarIcon:({focused}) => {
@@ -72,7 +130,7 @@ export default function App(){
         />
         <Tab.Screen 
         name="Mine" 
-        component = {MineScreen} 
+        component = {StackMineScreen} 
         options={{
           tabBarLabel:'我的',
           tabBarIcon:({focused}) => {
@@ -85,7 +143,13 @@ export default function App(){
         }}
         />
       </Tab.Navigator>
-      
+  );
+}
+
+export default function App(){
+  return(
+    <NavigationContainer>
+      <TabScreen/>
     </NavigationContainer>
   );
 }
