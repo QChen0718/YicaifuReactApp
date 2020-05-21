@@ -12,12 +12,14 @@ import {
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+
 import HomeScreen from './pages/Home';
-import Find from './pages/Find';
-import Nearby from './pages/Nearby';
-import Mine from './pages/Mine';
+import FindScreen from './pages/Find';
+import NearbyScreen from './pages/Nearby';
+import MineScreen from './pages/Mine';
 
 const Tab = createBottomTabNavigator();
+
 export default function App(){
   return(
     <NavigationContainer>
@@ -35,54 +37,55 @@ export default function App(){
             if(focused){
               return <Image source={require('../YicaifuProject/assets/Tab_Home_P.png')} style={styles.bottomTabIconStyle}/>;
             }else{
-              return <Image source={require('../assets/Tab_Home_N.png')} style={styles.bottomTabIconStyle}/>;
+              return <Image source={require('../YicaifuProject/assets/Tab_Home_N.png')} style={styles.bottomTabIconStyle}/>;
             }
           }
         }}
         />
         <Tab.Screen 
         name="Find" 
-        component = {Find} 
+        component = {FindScreen} 
         options={{
           tabBarLabel:'发现',
           tabBarIcon:({focused}) => {
             if(focused){
-              return <Image source={require('../assets/Find_P.png')} style={styles.bottomTabIconStyle}/>;
+              return <Image source={require('../YicaifuProject/assets/Find_P.png')} style={styles.bottomTabIconStyle}/>;
             }else{
-              return <Image source={require('../assets/Find_N.png')} style={styles.bottomTabIconStyle}/>;
+              return <Image source={require('../YicaifuProject/assets/Find_N.png')} style={styles.bottomTabIconStyle}/>;
             }
           }
         }}
         />
         <Tab.Screen 
         name="Nearby" 
-        component = {Nearby} 
+        component = {NearbyScreen} 
         options={{
           tabBarLabel:'附近',
           tabBarIcon:({focused}) => {
             if(focused){
-              return <Image source={require('../assets/Tab_Product_P.png')} style={styles.bottomTabIconStyle}/>;
+              return <Image source={require('../YicaifuProject/assets/Tab_Product_P.png')} style={styles.bottomTabIconStyle}/>;
             }else{
-              return <Image source={require('../assets/Tab_Product_N.png')} style={styles.bottomTabIconStyle}/>;
+              return <Image source={require('../YicaifuProject/assets/Tab_Product_N.png')} style={styles.bottomTabIconStyle}/>;
             }
           }
         }}
         />
         <Tab.Screen 
-        name="Nearby" 
-        component = {Mine} 
+        name="Mine" 
+        component = {MineScreen} 
         options={{
           tabBarLabel:'我的',
           tabBarIcon:({focused}) => {
             if(focused){
-              return <Image source={require('../assets/Tab_User_P.png')} style={styles.bottomTabIconStyle}/>;
+              return <Image source={require('../YicaifuProject/assets/Tab_User_P.png')} style={styles.bottomTabIconStyle}/>;
             }else{
-              return <Image source={require('../assets/Tab_User_N.png')} style={styles.bottomTabIconStyle}/>;
+              return <Image source={require('../YicaifuProject/assets/Tab_User_N.png')} style={styles.bottomTabIconStyle}/>;
             }
           }
         }}
         />
       </Tab.Navigator>
+      
     </NavigationContainer>
   );
 }
