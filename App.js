@@ -18,6 +18,7 @@ import HomeScreen from './pages/Home';
 import FindScreen from './pages/Find';
 import NearbyScreen from './pages/Nearby';
 import MineScreen from './pages/Mine';
+import HomeDetailScreen from './pages/HomeDetail';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -29,11 +30,15 @@ function StackHomeScreen() {
       initialRouteName = "Home"
       >
         <Stack.Screen
-         name="首页"
+         name="Home"
          component = {HomeScreen}
          options = {{
-           tabBarLabel:'首页'
+           title:'首页'
          }}
+        />
+        <Stack.Screen
+        name="HomeDetail"
+        component = {HomeDetailScreen}
         />
       </Stack.Navigator>
   )
@@ -45,10 +50,10 @@ function StackFindScreen() {
       initialRouteName = "Find"
       >
         <Stack.Screen
-         name="发现"
+         name="Find"
          component = {FindScreen}
          options = {{
-           tabBarLabel:'首页'
+           title:'发现'
          }}
         />
       </Stack.Navigator>
@@ -60,8 +65,11 @@ function StackNearbyScreen() {
     <Stack.Navigator
       initialRouteName = "Nearby">
         <Stack.Screen
-          name="附近"
+          name="Nearby"
           component = {NearbyScreen}
+          options = {{
+            title:'附近'
+          }}
         />
       </Stack.Navigator>
   )
@@ -72,8 +80,11 @@ function StackMineScreen() {
     <Stack.Navigator
       initialRouteName = "Mine">
         <Stack.Screen
-          name="我的"
+          name="Mine"
           component = {MineScreen}
+          options = {{
+            title:'我的'
+          }}
         />
       </Stack.Navigator>
   )
@@ -84,7 +95,8 @@ function TabScreen() {
     <Tab.Navigator
        initialRouteName="Home"
        tabBarOptions={{
-         activeTintColor:'#e91e63'
+         activeTintColor:'red',
+         inactiveTintColor:'gray'
        }}>
         <Tab.Screen 
         name="Home" 
