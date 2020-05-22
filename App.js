@@ -39,6 +39,9 @@ function StackHomeScreen() {
         <Stack.Screen
         name="HomeDetail"
         component = {HomeDetailScreen}
+        options = {{
+          title:'详情'
+        }}
         />
       </Stack.Navigator>
   )
@@ -101,56 +104,68 @@ function TabScreen() {
         <Tab.Screen 
         name="Home" 
         component = {StackHomeScreen} 
-        options={{
-          tabBarLabel:'首页',
-          tabBarIcon:({focused}) => {
+        options={props => {
+          return {
+            title:'首页',
+            tabBarIcon:({focused}) => {
             if(focused){
               return <Image source={require('../YicaifuProject/assets/Tab_Home_P.png')} style={styles.bottomTabIconStyle}/>;
             }else{
               return <Image source={require('../YicaifuProject/assets/Tab_Home_N.png')} style={styles.bottomTabIconStyle}/>;
             }
-          }
+          },
+          tabBarVisible: !props.route.state || props.route.state.index === 0,
+          };
         }}
         />
         <Tab.Screen 
         name="Find" 
         component = {StackFindScreen} 
-        options={{
-          tabBarLabel:'发现',
-          tabBarIcon:({focused}) => {
-            if(focused){
-              return <Image source={require('../YicaifuProject/assets/Find_P.png')} style={styles.bottomTabIconStyle}/>;
-            }else{
-              return <Image source={require('../YicaifuProject/assets/Find_N.png')} style={styles.bottomTabIconStyle}/>;
-            }
+        options={ props => {
+          return {
+            tabBarLabel:'发现',
+            tabBarIcon:({focused}) => {
+              if(focused){
+                return <Image source={require('../YicaifuProject/assets/Find_P.png')} style={styles.bottomTabIconStyle}/>;
+              }else{
+                return <Image source={require('../YicaifuProject/assets/Find_N.png')} style={styles.bottomTabIconStyle}/>;
+              }
+            },
+            tabBarVisible: !props.route.state || props.route.state.index === 0,
           }
         }}
         />
         <Tab.Screen 
         name="Nearby" 
         component = {StackNearbyScreen} 
-        options={{
-          tabBarLabel:'附近',
-          tabBarIcon:({focused}) => {
-            if(focused){
-              return <Image source={require('../YicaifuProject/assets/Tab_Product_P.png')} style={styles.bottomTabIconStyle}/>;
-            }else{
-              return <Image source={require('../YicaifuProject/assets/Tab_Product_N.png')} style={styles.bottomTabIconStyle}/>;
-            }
+        options={ props => {
+          return {
+            tabBarLabel:'附近',
+            tabBarIcon:({focused}) => {
+              if(focused){
+                return <Image source={require('../YicaifuProject/assets/Tab_Product_P.png')} style={styles.bottomTabIconStyle}/>;
+              }else{
+                return <Image source={require('../YicaifuProject/assets/Tab_Product_N.png')} style={styles.bottomTabIconStyle}/>;
+              }
+            },
+            tabBarVisible: !props.route.state || props.route.state.index === 0,
           }
         }}
         />
         <Tab.Screen 
         name="Mine" 
         component = {StackMineScreen} 
-        options={{
-          tabBarLabel:'我的',
-          tabBarIcon:({focused}) => {
-            if(focused){
-              return <Image source={require('../YicaifuProject/assets/Tab_User_P.png')} style={styles.bottomTabIconStyle}/>;
-            }else{
-              return <Image source={require('../YicaifuProject/assets/Tab_User_N.png')} style={styles.bottomTabIconStyle}/>;
-            }
+        options={ props => {
+          return {
+            tabBarLabel:'我的',
+            tabBarIcon:({focused}) => {
+              if(focused){
+                return <Image source={require('../YicaifuProject/assets/Tab_User_P.png')} style={styles.bottomTabIconStyle}/>;
+              }else{
+                return <Image source={require('../YicaifuProject/assets/Tab_User_N.png')} style={styles.bottomTabIconStyle}/>;
+              }
+            },
+            tabBarVisible: !props.route.state || props.route.state.index === 0,
           }
         }}
         />
