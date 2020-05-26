@@ -114,6 +114,7 @@ function TabScreen() {
               return <Image source={require('../YicaifuProject/assets/Tab_Home_N.png')} style={styles.bottomTabIconStyle}/>;
             }
           },
+          // 跳转到二级页面隐藏标签栏
           tabBarVisible: !props.route.state || props.route.state.index === 0,
           };
         }}
